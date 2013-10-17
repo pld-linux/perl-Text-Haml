@@ -17,6 +17,7 @@ URL:		http://search.cpan.org/dist/Text-Haml/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
+BuildRequires:	perl-Data-Section-Simple
 BuildRequires:	perl-URI
 %endif
 BuildArch:	noarch
