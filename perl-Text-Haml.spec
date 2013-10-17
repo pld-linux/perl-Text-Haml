@@ -53,5 +53,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %{perl_vendorlib}/Text/*.pm
-%{perl_vendorlib}/Text/Haml
 %{_mandir}/man3/*
