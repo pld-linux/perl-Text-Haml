@@ -6,15 +6,17 @@
 %define		pnam	Haml
 %include	/usr/lib/rpm/macros.perl
 Summary:	Text::Haml - Haml Perl implementation
+Summary(pl.UTF-8):	Text::Haml - implementacja Haml dla Perla
 Name:		perl-Text-Haml
-Version:	0.990110
+Version:	0.990115
 Release:	1
-License:	artistic_2
+License:	Artistic v2.0
 Group:		Development/Languages/Perl
-Source0:	http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Text-Haml-0.990110.tar.gz
-# Source0-md5:	b3f422b25582c019fa667d5c8be49047
+Source0:	http://www.cpan.org/modules/by-module/Text/Text-Haml-%{version}.tar.gz
+# Source0-md5:	9b2b0b335e39fcc96dd7b60b5ba9c914
 URL:		http://search.cpan.org/dist/Text-Haml/
-BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	perl-Module-Build >= 0.38
+BuildRequires:	perl-devel >= 1:5.8.1
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Data-Section-Simple
@@ -24,33 +26,43 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Text::Haml implements Haml
-http://haml-lang.com/docs/yardoc/file.HAML_REFERENCE.html specification.
+Text::Haml implements Haml specification:
+<http://haml-lang.com/docs/yardoc/file.HAML_REFERENCE.html>.
 
 Text::Haml passes specification tests written by Norman Clarke
-http://github.com/norman/haml-spec and supports only cross-language Haml
-features. Do not expect Ruby specific things to work.
+<http://github.com/norman/haml-spec> and supports only cross-language
+Haml features. Do not expect Ruby specific things to work.
+
+%description -l pl.UTF-8
+Text::Haml implementuje specyfikację Haml:
+<http://haml-lang.com/docs/yardoc/file.HAML_REFERENCE.html>.
+
+Text::Haml przechodzi testy specifikacji napisane przez Normana
+Clarke'a (<http://github.com/norman/haml-spec>) i obsługuje tylko
+cechy Hamla wspólne dla wielu języków - nie należy się spodziewać, że
+elementy specyficzne dla języka Ruby będą działać.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Makefile.PL \
-	INSTALLDIRS=vendor
-%{__make}
+%{__perl} Build.PL \
+	destdir=$RPM_BUILD_ROOT \
+	installdirs=vendor
+./Build
 
-%{?with_tests:%{__make} test}
+%{?with_tests:./Build test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} pure_install \
-	DESTDIR=$RPM_BUILD_ROOT
+./Build install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{perl_vendorlib}/Text/*.pm
-%{_mandir}/man3/*
+%doc Changes 
+%{perl_vendorlib}/Text/Haml.pm
+%{_mandir}/man3/Text::Haml.3pm*
