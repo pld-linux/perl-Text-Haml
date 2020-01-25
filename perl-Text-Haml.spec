@@ -4,7 +4,6 @@
 #
 %define		pdir	Text
 %define		pnam	Haml
-%include	/usr/lib/rpm/macros.perl
 Summary:	Text::Haml - Haml Perl implementation
 Summary(pl.UTF-8):	Text::Haml - implementacja Haml dla Perla
 Name:		perl-Text-Haml
