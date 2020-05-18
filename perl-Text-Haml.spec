@@ -12,7 +12,7 @@ Release:	1
 License:	Artistic v2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Text/Text-Haml-%{version}.tar.gz
-# Source0-md5:	9b2b0b335e39fcc96dd7b60b5ba9c914
+# Source0-md5:	7f0b65b62e2515a46425ca35bf2b4808
 URL:		http://search.cpan.org/dist/Text-Haml/
 BuildRequires:	perl-Module-Build >= 0.38
 BuildRequires:	perl-devel >= 1:5.8.1
