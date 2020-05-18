@@ -15,6 +15,7 @@ Source0:	http://www.cpan.org/modules/by-module/Text/Text-Haml-%{version}.tar.gz
 # Source0-md5:	7f0b65b62e2515a46425ca35bf2b4808
 URL:		http://search.cpan.org/dist/Text-Haml/
 BuildRequires:	perl-Module-Build >= 0.38
+BuildRequires:	perl-Module-Build-Tiny
 BuildRequires:	perl-devel >= 1:5.8.1
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -46,8 +47,9 @@ elementy specyficzne dla języka Ruby będą działać.
 
 %build
 %{__perl} Build.PL \
-	destdir=$RPM_BUILD_ROOT \
-	installdirs=vendor
+	--destdir=$RPM_BUILD_ROOT \
+	--installdirs=vendor
+
 ./Build
 
 %{?with_tests:./Build test}
