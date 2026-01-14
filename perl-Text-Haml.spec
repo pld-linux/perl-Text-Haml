@@ -8,7 +8,7 @@ Summary:	Text::Haml - Haml Perl implementation
 Summary(pl.UTF-8):	Text::Haml - implementacja Haml dla Perla
 Name:		perl-Text-Haml
 Version:	0.990118
-Release:	1
+Release:	2
 License:	Artistic v2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Text/Text-Haml-%{version}.tar.gz
